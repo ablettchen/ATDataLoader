@@ -1,6 +1,6 @@
 # ATDataLoader
 
-[![CI Status](https://img.shields.io/travis/chenjungang/ATDataLoader.svg?style=flat)](https://travis-ci.org/chenjungang/ATDataLoader)
+[![CI Status](https://img.shields.io/travis/ablettchen/ATDataLoader.svg?style=flat)](https://travis-ci.org/ablettchen/ATDataLoader)
 [![Version](https://img.shields.io/cocoapods/v/ATDataLoader.svg?style=flat)](https://cocoapods.org/pods/ATDataLoader)
 [![License](https://img.shields.io/cocoapods/l/ATDataLoader.svg?style=flat)](https://cocoapods.org/pods/ATDataLoader)
 [![Platform](https://img.shields.io/cocoapods/p/ATDataLoader.svg?style=flat)](https://cocoapods.org/pods/ATDataLoader)
@@ -22,7 +22,7 @@ pod 'ATDataLoader'
 
 ## Author
 
-chenjungang, chenjungang@zhisland.com
+ablettchen, ablettchen@gmail.com
 
 ## License
 
