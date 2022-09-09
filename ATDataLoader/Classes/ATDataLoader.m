@@ -15,6 +15,11 @@
 #import "MJRefresh.h"
 #endif
 
+#if __has_include(<Reachability/Reachability.h>)
+#import <Reachability/Reachability.h>
+#else
+#import "Reachability.h"
+#endif
 
 #define atSafePerformSelector(obj, sel, arg) ({ \
     BOOL perform = NO; \
@@ -100,7 +105,12 @@
                 }
             }else {
                 
-                self.blankType = error ? ATBlankTypeFailure : ATBlankTypeNoData;
+                enum ATBlankType blankType = ATBlankTypeNoData;
+                if (error) {
+                    Reachability *reachable = Reachability.reachabilityForInternetConnection;
+                    blankType = (reachable.currentReachabilityStatus == NotReachable) ? ATBlankTypeNoNetwork : ATBlankTypeFailure;
+                }
+                self.blankType = blankType;
             }
             
             break;
@@ -213,7 +223,7 @@
     ATBlank *blank = self.conf.blankDic[@(blankType)];
     if (blank) {
         
-        if (blankType == ATBlankTypeFailure) {
+        if (blankType != ATBlankTypeNoData) {
             __weak typeof(self) wSelf = self;
             blank.action = ^{
                 [wSelf loadNewData];
@@ -243,7 +253,8 @@
         self.animated = ATDataLoadAnimatedRefresh;
         self.length = 20;
         self.blankDic = [@{
-            @(ATBlankTypeFailure): ATBlank.noNetworkBlank,
+            @(ATBlankTypeNoNetwork): ATBlank.noNetworkBlank,
+            @(ATBlankTypeFailure): ATBlank.failureBlank,
             @(ATBlankTypeNoData): ATBlank.noDataBlank
         } mutableCopy];
     }
