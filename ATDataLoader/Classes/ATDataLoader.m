@@ -40,7 +40,6 @@
 @property (nonatomic, assign) enum ATDataLoadState state;
 @property (nonatomic, strong) ATDataRange *range;
 @property (nonatomic, weak, nullable) __kindof UIScrollView *listView;
-@property (nonatomic, assign, readonly) BOOL isLastPage;
 @property (nonatomic, assign) enum ATBlankType blankType;
 @property (nonatomic, strong) ATBlankView *blankView;
 @end

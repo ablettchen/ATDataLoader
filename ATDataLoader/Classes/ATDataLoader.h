@@ -64,6 +64,7 @@ NS_INLINE ATDataRange *ATDataRangeMake(NSString * _Nullable loc, NSUInteger len)
 @property (nonatomic, strong, readonly, nullable) ATDataLoadConf *conf; // 加载配置
 @property (nonatomic, assign, readonly) enum ATDataLoadState state;     // 加载状态
 @property (nonatomic, strong, readonly, nonnull) ATDataRange *range;    // 数据区间
+@property (nonatomic, assign, readonly) BOOL isLastPage;                // 是否最后一页
 
 // 加载新数据
 - (void)loadNewData;
